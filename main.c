@@ -17,7 +17,7 @@ char *getLocation(char *daPath, char *command, char *name)
 	char **pathList;
 
 	int y = 0;
-
+	printf("%s\n", command);
 	if (access(command, X_OK) == 0)
 	{
 		return (_strdup(command));
@@ -45,6 +45,7 @@ char *getLocation(char *daPath, char *command, char *name)
 }
 int exacute(char **input, char *name)
 {
+	extern char** environ;
 	pid_t pid;
 	char *command = input[0];
 	char *daPath = getpath();
@@ -63,7 +64,7 @@ int exacute(char **input, char *name)
 		}
 		if (pid == 0)
 		{
-			if(execve(location, input, NULL) == -1)
+			if(execve(location, input, environ) == -1)
 				perror(name);
 		}
 	}
@@ -87,9 +88,7 @@ int main(int argc, char **argv)
 	while (chars > 0)
 	{
 		if (isatty(STDIN_FILENO))
-		{
 			putstring("$ ");
-		}
 		chars = getline(&string, &inSize, stdin);
 		if (chars == -1)
 			break;
