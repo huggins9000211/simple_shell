@@ -46,7 +46,6 @@ char *getLocation(char *daPath, char *command, char *name)
 int exacute(char **input, char *name)
 {
 	pid_t pid;
-	extern char **environ;
 	char *command = input[0];
 	char *daPath = getpath();
 	char *location = getLocation(daPath, command, name);
@@ -64,7 +63,7 @@ int exacute(char **input, char *name)
 		}
 		if (pid == 0)
 		{
-			if(execve(location, input, environ) == -1)
+			if(execve(location, input, NULL) == -1)
 				perror(name);
 		}
 	}
