@@ -113,5 +113,5 @@ int main(int argc, char **argv)
 		}
 	}
 	free (string);
-	exit(1);
+	exit(0);
 }
