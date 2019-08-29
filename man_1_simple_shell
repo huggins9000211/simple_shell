@@ -1,0 +1,14 @@
+.TH hsh 1 "28 August 2019" "version 1.0"
+.SH NAME
+hsh \- Simple shell to run executables
+.SH SYNOPSIS
+.B command
+[\fIoptions\fR]
+[\fIfile\fR]
+.SH DESCRIPTION
+.B hsh
+runs
+.B command
+on [\fIfile\fR].
+.SH OPTIONS
+the options will depend on the command being run
