@@ -105,7 +105,7 @@ int main(int argc, char **argv)
 			{
 				freeDP(result);
 				free(string);
-				exit(1);
+				exit(0);
 			}
 			else if (buildInCode == 0)
 				exacute(result, name);
